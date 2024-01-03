@@ -1,7 +1,6 @@
+// useStyles in your styles file
 import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
-  modal: { padding: "15px 0 10px 0" },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export default useStyles;
