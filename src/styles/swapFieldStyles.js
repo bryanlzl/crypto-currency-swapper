@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   amountField: {
-    backgroundColor: "white",
     "& .MuiFilledInput-root": {
       borderRadius: "5px",
       fontWeight: "bold",
@@ -21,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiInputLabel-root.Mui-focused": {
       color: "#686868",
       fontWeight: "bold",
-      textShadow: "0 0 5px rgba(0,0,0,0.5)",
+      textShadow: "0 0 5px rgba(97, 159, 218, 0.75)",
     },
     "& .MuiInputLabel-root, & .MuiInput-input::placeholder": {
       fontWeight: "bold",
-      color: "gray", // Set the color to light gray
+      color: "#a2a2a2",
     },
   },
 }));

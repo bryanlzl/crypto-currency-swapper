@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CurrencySwap from "./components/CurrencySwap";
+import "./styles/App.css";
 
 function App() {
   const currency = {

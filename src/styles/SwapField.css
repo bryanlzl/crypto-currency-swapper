@@ -2,3 +2,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.img-hover-effect {
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 12px rgba(97, 159, 218, 5);
+}
+
+.custom-input-class {
+  padding: 25px 12px 0px 12px !important;
+}
+
+.full-input-field:hover {
+  background-color: black;
+}

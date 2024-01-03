@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Box, Typography } from "@mui/material";
+import { Button, Box, Tooltip } from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapField from "./SwapField";
 import SelectionModal from "./modal/SelectionModal";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import "../styles/CurrencySwap.css";
 
 function CurrencySwap(props) {
@@ -12,9 +12,19 @@ function CurrencySwap(props) {
   const [isHovered, setIsHovered] = useState(false);
   const triggerModal = { modalState: modalState, setModalState: setModalState };
   const [swappedCurrency, setSwappedCurrency] = useState({
-    pay: { currency: "", amount: 0 },
+    pay: { currency: "", amount: 0, USD: 0 },
     receive: { currency: "", amount: 0 },
+    conversionRate: {
+      biggerCurrency: "",
+      smallerCurrency: "",
+      bigToSmallRate: 0,
+    },
   });
+  const handleCurrencySwap = () => {
+    setSwappedCurrency((prev) => {
+      return { pay: prev.receive, receive: prev.pay };
+    });
+  };
   const swappedCurrencySetting = {
     swappedCurrency: swappedCurrency,
     setSwappedCurrency: setSwappedCurrency,
@@ -28,30 +38,70 @@ function CurrencySwap(props) {
   const renderSwapIcon = isHovered ? (
     <SwapHorizIcon fontSize="large" htmlColor="gray" />
   ) : (
-    <KeyboardDoubleArrowRightIcon fontSize="large" htmlColor="gray" />
+    <DoubleArrowIcon fontSize="large" htmlColor="gray" />
   );
 
   return (
-    <div className="app">
+    <div className="main">
       <Box className="swap-interface">
         <SwapField
           fieldType="pay"
           triggerModal={triggerModal}
           swappedCurrencySetting={swappedCurrencySetting}
+          currency={currency}
         />
-
-        <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          {renderSwapIcon}
-        </Button>
+        <Tooltip
+          title="Swap Currency"
+          arrow
+          slotProps={{
+            popper: {
+              modifiers: [
+                {
+                  name: "offset",
+                  options: {
+                    offset: [0, -5],
+                  },
+                },
+              ],
+            },
+          }}
+        >
+          <Button
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            disableRipple
+            disableFocusRipple
+            style={{
+              height: "40px",
+              position: "relative",
+              width: "auto",
+            }}
+            onClick={handleCurrencySwap}
+          >
+            {renderSwapIcon}
+          </Button>
+        </Tooltip>
 
         <SwapField
           fieldType="receive"
           triggerModal={triggerModal}
           swappedCurrencySetting={swappedCurrencySetting}
+          currency={currency}
         />
       </Box>
-      <Button variant="contained" className="swap-button">
-        Swap!
+      <Button
+        variant="contained"
+        className="swap-button"
+        style={{
+          width: "100%",
+          backgroundColor: "#5ba1e6",
+          fontWeight: "bold",
+          letterSpacing: "-0.5px",
+          color: "#efefef",
+          borderRadius: "10px",
+        }}
+      >
+        Exchange
       </Button>
       <SelectionModal
         triggerModal={triggerModal}

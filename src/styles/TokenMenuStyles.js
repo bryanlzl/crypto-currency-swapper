@@ -7,8 +7,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
   },
   slimScrollbar: {
-    maxHeight: "400px",
+    maxHeight: "300px",
     overflowY: "auto",
+    width: "400px",
     marginTop: "10px",
     scrollbarWidth: "thin", // For Firefox
     "&::-webkit-scrollbar": {

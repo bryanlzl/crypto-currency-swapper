@@ -17,30 +17,33 @@ function SelectionModal(props) {
   return (
     <Dialog
       open={modalState.isOpen}
+      PaperProps={{ sx: { borderRadius: "15px" } }}
       onClose={(prev) =>
         setModalState((prev) => {
           return { ...prev, isOpen: !prev.isOpen };
         })
       }
     >
-      <DialogTitle style={{ letterSpacing: "-0.5px" }}>
-        Choose token to {modalMessage}
-      </DialogTitle>
-      <DialogContent className={modalStyles.modalContent}>
-        <DialogContentText
-          marginBottom={"10px"}
-          flexWrap={true}
-          style={{ letterSpacing: "-0.5px" }}
-        >
-          Enter keyword or select from list below
-        </DialogContentText>
-        <TokenMenu
-          swappedCurrencySetting={swappedCurrencySetting}
-          currency={Object.keys(currency)}
-          triggerModal={props.triggerModal}
-          style={{ width: "100%" }}
-        />
-      </DialogContent>
+      <div style={{ borderRadius: "15px" }}>
+        <DialogTitle style={{ letterSpacing: "-0.5px" }}>
+          Choose token to {modalMessage}
+        </DialogTitle>
+        <DialogContent style={{ overflowY: "hidden" }}>
+          <DialogContentText
+            marginBottom={"10px"}
+            flexWrap={true}
+            style={{ letterSpacing: "-0.5px" }}
+          >
+            Enter keyword or select from list below
+          </DialogContentText>
+          <TokenMenu
+            swappedCurrencySetting={swappedCurrencySetting}
+            currency={Object.keys(currency)}
+            triggerModal={props.triggerModal}
+            style={{ width: "100%" }}
+          />
+        </DialogContent>
+      </div>
     </Dialog>
   );
 }
