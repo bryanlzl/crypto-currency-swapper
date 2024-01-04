@@ -8,15 +8,33 @@ import "../styles/SwapField.css";
 function SwapField(props) {
   const currency = props.currency;
   const fieldType = props.fieldType;
+  const { swappedConvRate, setSwappedConvRate } =
+    fieldType === "receive" && props.currentConversion;
   const { modalState, setModalState } = props.triggerModal;
   const { swappedCurrency, setSwappedCurrency } = props.swappedCurrencySetting;
   const [isHovered, setIsHovered] = useState(false);
   const currencySelected = swappedCurrency[fieldType]["currency"];
   const swapFieldStyles = useStyles();
-  const [amount, setAmount] = useState(0); // Initialize with an empty string
+  const [amount, setAmount] = useState(0);
   const handleChange = (event) => {
     event.target.value !== 0 ? setAmount(event.target.value) : setAmount(0);
     setSwappedCurrency((prev) => {
+      const payCurrencyRate =
+        fieldType === "pay" && prev[fieldType]["currency"] !== ""
+          ? currency[prev[fieldType]["currency"]]["price"]
+          : 0;
+      const receiveCurrencyRate =
+        fieldType === "receive" && prev[fieldType]["currency"] !== ""
+          ? currency[prev[fieldType]["currency"]]["price"]
+          : 0;
+      const payUSDvalue =
+        fieldType === "pay" && prev[fieldType]["currency"] !== ""
+          ? event.target.value * payCurrencyRate
+          : 0;
+      const receiveUSDvalue =
+        fieldType === "receive" && prev[fieldType]["currency"] !== ""
+          ? event.target.value * receiveCurrencyRate
+          : 0;
       if (
         swappedCurrency[fieldType]["currency"] !== "" &&
         fieldType === "pay"
@@ -26,9 +44,44 @@ function SwapField(props) {
           [fieldType]: {
             ...prev[fieldType],
             amount: Number(event.target.value),
-            USD:
-              event.target.value *
-              currency[prev[fieldType]["currency"]]["price"],
+            USD: payUSDvalue,
+          },
+          receive: {
+            ...prev.receive,
+            currency:
+              prev.receive.currency !== "" ? prev.receive.currency : "USD",
+            amount:
+              prev.receive.currency !== ""
+                ? payUSDvalue / currency[prev.receive["currency"]]["price"]
+                : payUSDvalue,
+          },
+        };
+      } else if (fieldType === "pay") {
+        return {
+          ...prev,
+          [fieldType]: {
+            ...prev[fieldType],
+            amount: Number(event.target.value),
+          },
+        };
+      } else if (
+        swappedCurrency[fieldType]["currency"] !== "" &&
+        fieldType === "receive"
+      ) {
+        return {
+          ...prev,
+          [fieldType]: {
+            ...prev[fieldType],
+            amount: Number(event.target.value),
+          },
+          pay: {
+            ...prev.pay,
+            USD: receiveUSDvalue,
+            currency: prev.pay.currency !== "" ? prev.pay.currency : "USD",
+            amount:
+              prev.pay.currency !== ""
+                ? receiveUSDvalue / currency[prev.pay["currency"]]["price"]
+                : receiveUSDvalue,
           },
         };
       } else {
@@ -183,6 +236,7 @@ function SwapField(props) {
           >
             <BottomLabel
               swappedCurrency={swappedCurrency}
+              swappedConvRate={swappedConvRate}
               fieldType={fieldType}
             ></BottomLabel>
           </InputLabel>

@@ -23,6 +23,9 @@ function TokenMenu(props) {
   );
 
   const selectTokenHandler = (newValue) => {
+    const newUSDamount =
+      swappedCurrency[fieldType]["amount"] * currency[newValue]["price"];
+
     setSwappedCurrency((prev) => {
       if (swappedCurrency[fieldType]["amount"] !== 0 && fieldType === "pay") {
         return {
@@ -30,9 +33,36 @@ function TokenMenu(props) {
           [fieldType]: {
             ...prev[fieldType],
             currency: newValue,
-            USD:
-              swappedCurrency[fieldType]["amount"] *
-              currency[newValue]["price"],
+            USD: newUSDamount,
+          },
+          receive: {
+            ...prev.receive,
+            currency:
+              prev.receive.currency !== "" ? prev.receive.currency : "USD",
+            amount:
+              prev.receive.currency !== ""
+                ? newUSDamount / currency[prev.receive.currency]["price"]
+                : newUSDamount,
+          },
+        };
+      } else if (
+        swappedCurrency[fieldType]["amount"] !== 0 &&
+        fieldType === "receive"
+      ) {
+        return {
+          ...prev,
+          [fieldType]: {
+            ...prev[fieldType],
+            currency: newValue,
+          },
+          pay: {
+            ...prev.pay,
+            currency: prev.pay.currency !== "" ? prev.pay.currency : "USD",
+            amount:
+              prev.pay.currency !== ""
+                ? newUSDamount / currency[prev.pay.currency]["price"]
+                : newUSDamount,
+            USD: newUSDamount,
           },
         };
       } else {

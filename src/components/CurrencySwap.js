@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Box, Tooltip } from "@mui/material";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapField from "./SwapField";
@@ -14,12 +14,16 @@ function CurrencySwap(props) {
   const [swappedCurrency, setSwappedCurrency] = useState({
     pay: { currency: "", amount: 0, USD: 0 },
     receive: { currency: "", amount: 0 },
-    conversionRate: {
-      biggerCurrency: "",
-      smallerCurrency: "",
-      bigToSmallRate: 0,
-    },
   });
+  const [swappedConvRate, setSwappedConvRate] = useState({
+    payCurrency: 0,
+    receiveCurrency: 0,
+    receiveToPayRate: 0,
+  });
+  const currentConversion = {
+    swappedConvRate: swappedConvRate,
+    setSwappedConvRate: setSwappedConvRate,
+  };
   const handleCurrencySwap = () => {
     setSwappedCurrency((prev) => {
       return {
@@ -48,6 +52,22 @@ function CurrencySwap(props) {
   ) : (
     <DoubleArrowIcon fontSize="large" htmlColor="gray" />
   );
+
+  useEffect(() => {
+    const payCurrency = swappedCurrency.pay.currency;
+    const receiveCurrency = swappedCurrency.receive.currency;
+    payCurrency &&
+      receiveCurrency &&
+      setSwappedConvRate((prev) => {
+        const receiveToPayRate =
+          currency[payCurrency].price / currency[receiveCurrency].price;
+        return {
+          payCurrency: payCurrency,
+          receiveCurrency: receiveCurrency,
+          receiveToPayRate: receiveToPayRate,
+        };
+      });
+  }, [swappedCurrency]);
 
   return (
     <div className="main">
@@ -94,6 +114,7 @@ function CurrencySwap(props) {
           fieldType="receive"
           triggerModal={triggerModal}
           swappedCurrencySetting={swappedCurrencySetting}
+          currentConversion={currentConversion}
           currency={currency}
         />
       </Box>
@@ -102,7 +123,7 @@ function CurrencySwap(props) {
         className="swap-button"
         style={{
           width: "100%",
-          backgroundColor: "#5ba1e6",
+          backgroundColor: "#8cbbeb",
           fontWeight: "bold",
           letterSpacing: "-0.5px",
           color: "#efefef",

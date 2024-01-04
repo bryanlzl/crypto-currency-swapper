@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 
 function BottomLabel(props) {
   const swappedCurrency = props.swappedCurrency;
+  const currency = props.currency;
   const fieldType = props.fieldType;
-  const [message, setMessage] = useState("");
-
+  const [message, setMessage] = useState({
+    payFieldMessage: "-",
+    receiveFieldMessage: "-",
+  });
+  const swappedConvRate = props.swappedConvRate;
   const createMessage = () => {
     if (fieldType === "pay") {
       const USDvalue = swappedCurrency[fieldType]["USD"];
@@ -28,20 +32,46 @@ function BottomLabel(props) {
             maximumFractionDigits: 2,
           });
         }
-        return `$${formattedValue}`;
+        setMessage((prev) => {
+          return {
+            ...prev,
+            payFieldMessage: `$${formattedValue}`,
+          };
+        });
       } else {
-        return "";
+        setMessage((prev) => {
+          return {
+            ...prev,
+            payFieldMessage: "-",
+          };
+        });
       }
     } else {
-      // Handle other cases here if needed
+      const RTPRate = swappedConvRate.receiveToPayRate;
+      const receiveCurrency = swappedConvRate.receiveCurrency;
+      const payCurrency = swappedConvRate.payCurrency;
+      setMessage((prev) => {
+        return {
+          ...prev,
+          receiveFieldMessage: RTPRate
+            ? `1 ${receiveCurrency} = ${RTPRate} ${payCurrency}`
+            : "-",
+        };
+      });
     }
   };
 
   useEffect(() => {
-    setMessage(createMessage());
-  }, [swappedCurrency]); // Depend on swappedCurrency and fieldType
+    createMessage();
+  }, [swappedCurrency, swappedConvRate]);
 
-  return <p style={{ margin: "0" }}>{message}</p>;
+  return (
+    <p style={{ margin: "0" }}>
+      {fieldType === "pay"
+        ? message.payFieldMessage
+        : message.receiveFieldMessage}
+    </p>
+  );
 }
 
 export default BottomLabel;
