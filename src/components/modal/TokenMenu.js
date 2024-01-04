@@ -12,21 +12,40 @@ import { Stack } from "@mui/material";
 function TokenMenu(props) {
   const { swappedCurrency, setSwappedCurrency } = props.swappedCurrencySetting;
   const { modalState, setModalState } = props.triggerModal;
-  const initialToken = swappedCurrency[modalState.openFor].currency;
+  const currency = props.currency;
+  const currencyList = Object.keys(currency);
+  const fieldType = modalState.openFor;
+  const initialToken = swappedCurrency[modalState.openFor]["currency"];
   const tokenStyles = styles();
   const [searchValue, setSearchValue] = useState("");
-  const filteredTokenList = props.currency.filter((option) =>
+  const filteredTokenList = currencyList.filter((option) =>
     option.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   const selectTokenHandler = (newValue) => {
-    setSwappedCurrency((prev) => ({
-      ...prev,
-      [modalState.openFor]: {
-        ...prev[modalState.openFor],
-        currency: newValue,
-      },
-    }));
+    setSwappedCurrency((prev) => {
+      if (swappedCurrency[fieldType]["amount"] !== 0 && fieldType === "pay") {
+        return {
+          ...prev,
+          [fieldType]: {
+            ...prev[fieldType],
+            currency: newValue,
+            USD:
+              swappedCurrency[fieldType]["amount"] *
+              currency[newValue]["price"],
+          },
+        };
+      } else {
+        return {
+          ...prev,
+          [fieldType]: {
+            ...prev[fieldType],
+            currency: newValue,
+          },
+        };
+      }
+    });
+
     setModalState((prev) => ({
       ...prev,
       isOpen: !prev.isOpen,
@@ -34,7 +53,7 @@ function TokenMenu(props) {
   };
 
   const renderAdornment = () => {
-    const selectedCurrency = swappedCurrency[modalState.openFor].currency;
+    const selectedCurrency = swappedCurrency[fieldType].currency;
     return selectedCurrency !== "" ? (
       <InputAdornment position="start">
         <img

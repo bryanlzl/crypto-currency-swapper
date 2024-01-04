@@ -22,7 +22,15 @@ function CurrencySwap(props) {
   });
   const handleCurrencySwap = () => {
     setSwappedCurrency((prev) => {
-      return { pay: prev.receive, receive: prev.pay };
+      return {
+        ...prev,
+        pay: {
+          currency: prev.receive.currency,
+          amount: prev.receive.amount,
+          USD: prev.pay.USD,
+        },
+        receive: { currency: prev.pay.currency, amount: prev.pay.amount },
+      };
     });
   };
   const swappedCurrencySetting = {

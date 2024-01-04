@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField, InputLabel, Button } from "@mui/material";
 import useStyles from "../styles/swapFieldStyles";
 import { ArrowDropDown, ExpandMore, InfoOutlined } from "@mui/icons-material";
+import BottomLabel from "./SwapFieldBottomLabel";
 import "../styles/SwapField.css";
 
 function SwapField(props) {
@@ -14,7 +15,7 @@ function SwapField(props) {
   const swapFieldStyles = useStyles();
   const [amount, setAmount] = useState(0); // Initialize with an empty string
   const handleChange = (event) => {
-    event.target.value !== "" ? setAmount(event.target.value) : setAmount(0);
+    event.target.value !== 0 ? setAmount(event.target.value) : setAmount(0);
     setSwappedCurrency((prev) => {
       if (
         swappedCurrency[fieldType]["currency"] !== "" &&
@@ -26,7 +27,7 @@ function SwapField(props) {
             ...prev[fieldType],
             amount: Number(event.target.value),
             USD:
-              swappedCurrency[fieldType]["amount"] *
+              event.target.value *
               currency[prev[fieldType]["currency"]]["price"],
           },
         };
@@ -105,19 +106,8 @@ function SwapField(props) {
       </div>
     );
 
-  const BottomLabel = () => {
-    if (fieldType === "pay") {
-      console.log("shanty", swappedCurrency[fieldType]);
-      const USDvalue = swappedCurrency[fieldType]["USD"];
-      const message = USDvalue !== 0 && `$${USDvalue}`;
-      console.log("cunty", USDvalue, message);
-      return <p style={{ margin: "0" }}>{message}</p>;
-    }
-  };
-
   useEffect(() => {
     setAmount(swappedCurrency[fieldType]["amount"]);
-    console.log(swappedCurrency);
   }, [swappedCurrency]);
 
   return (
@@ -182,9 +172,8 @@ function SwapField(props) {
               borderBottomLeftRadius: "15px",
               borderBottomRightRadius: "15px",
               backgroundColor: "#dfdfdf",
-              color: "",
+              color: "#9f9f9f",
               fontSize: "13px",
-              letterSpacing: "-0.5px",
               fontWeight: "bold",
               padding: "3px 20px 0px 20px",
               height: "20px",
@@ -192,7 +181,10 @@ function SwapField(props) {
               borderColor: "#dfdfdf",
             }}
           >
-            <BottomLabel></BottomLabel>
+            <BottomLabel
+              swappedCurrency={swappedCurrency}
+              fieldType={fieldType}
+            ></BottomLabel>
           </InputLabel>
         </div>
       </div>

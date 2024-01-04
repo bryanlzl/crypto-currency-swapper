@@ -38,7 +38,7 @@ function SelectionModal(props) {
           </DialogContentText>
           <TokenMenu
             swappedCurrencySetting={swappedCurrencySetting}
-            currency={Object.keys(currency)}
+            currency={currency}
             triggerModal={props.triggerModal}
             style={{ width: "100%" }}
           />
