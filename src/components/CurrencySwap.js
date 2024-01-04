@@ -48,9 +48,9 @@ function CurrencySwap(props) {
     setIsHovered(false);
   };
   const renderSwapIcon = isHovered ? (
-    <SwapHorizIcon fontSize="large" htmlColor="gray" />
+    <SwapHorizIcon fontSize="large" htmlColor="#dfdfdf" />
   ) : (
-    <DoubleArrowIcon fontSize="large" htmlColor="gray" />
+    <DoubleArrowIcon fontSize="large" htmlColor="#dfdfdf" />
   );
 
   useEffect(() => {
@@ -60,7 +60,7 @@ function CurrencySwap(props) {
       receiveCurrency &&
       setSwappedConvRate((prev) => {
         const receiveToPayRate =
-          currency[payCurrency].price / currency[receiveCurrency].price;
+          currency[receiveCurrency].price / currency[payCurrency].price;
         return {
           payCurrency: payCurrency,
           receiveCurrency: receiveCurrency,
@@ -76,6 +76,7 @@ function CurrencySwap(props) {
           fieldType="pay"
           triggerModal={triggerModal}
           swappedCurrencySetting={swappedCurrencySetting}
+          currentConversion={currentConversion}
           currency={currency}
         />
         <Tooltip
@@ -100,8 +101,9 @@ function CurrencySwap(props) {
             disableRipple
             disableFocusRipple
             style={{
-              height: "40px",
+              height: "80px",
               position: "relative",
+              marginTop: "30px",
               width: "auto",
             }}
             onClick={handleCurrencySwap}
@@ -121,13 +123,19 @@ function CurrencySwap(props) {
       <Button
         variant="contained"
         className="swap-button"
-        style={{
-          width: "100%",
-          backgroundColor: "#8cbbeb",
+        sx={{
+          marginTop: "10px",
+          height: "30px",
+          width: "700px",
+          backgroundColor: "#9ebede",
           fontWeight: "bold",
           letterSpacing: "-0.5px",
-          color: "#efefef",
+          color: "#303030",
           borderRadius: "10px",
+          "&:hover": {
+            backgroundColor: "#868bac",
+            color: "lightgray",
+          },
         }}
       >
         Exchange

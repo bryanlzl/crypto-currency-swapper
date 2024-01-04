@@ -7,6 +7,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import styles from "../../styles/TokenMenuStyles";
+import "../../styles/TokenMenu.css";
 import { Stack } from "@mui/material";
 
 function TokenMenu(props) {
@@ -21,12 +22,14 @@ function TokenMenu(props) {
   const filteredTokenList = currencyList.filter((option) =>
     option.toLowerCase().includes(searchValue.toLowerCase())
   );
-
   const selectTokenHandler = (newValue) => {
-    const newUSDamount =
-      swappedCurrency[fieldType]["amount"] * currency[newValue]["price"];
-
     setSwappedCurrency((prev) => {
+      const newUSDamount =
+        prev["pay"]["currency"] !== ""
+          ? prev["pay"]["amount"] * currency[prev["pay"]["currency"]]["price"]
+          : prev["pay"]["amount"] *
+            currency[fieldType === "pay" ? newValue : "USD"]["price"];
+
       if (swappedCurrency[fieldType]["amount"] !== 0 && fieldType === "pay") {
         return {
           ...prev,
@@ -54,14 +57,15 @@ function TokenMenu(props) {
           [fieldType]: {
             ...prev[fieldType],
             currency: newValue,
+            amount:
+              prev.pay.currency !== ""
+                ? (prev.pay.amount * currency[prev.pay.currency]["price"]) /
+                  currency[newValue]["price"]
+                : newUSDamount,
           },
           pay: {
             ...prev.pay,
             currency: prev.pay.currency !== "" ? prev.pay.currency : "USD",
-            amount:
-              prev.pay.currency !== ""
-                ? newUSDamount / currency[prev.pay.currency]["price"]
-                : newUSDamount,
             USD: newUSDamount,
           },
         };
@@ -75,7 +79,11 @@ function TokenMenu(props) {
         };
       }
     });
+  };
 
+  const tokenHandler = (newValue) => {
+    selectTokenHandler(newValue);
+    selectTokenHandler(newValue);
     setModalState((prev) => ({
       ...prev,
       isOpen: !prev.isOpen,
@@ -110,12 +118,14 @@ function TokenMenu(props) {
         }}
       />
       <div className={tokenStyles.slimScrollbar}>
-        <List disablePadding>
+        <List disablePadding styles={{ height: "100px" }}>
           {filteredTokenList.map((option) => (
             <ListItem
               key={option}
               button
-              onClick={() => selectTokenHandler(option)}
+              onClick={() => {
+                tokenHandler(option);
+              }}
             >
               <ListItemText
                 primary={
@@ -127,9 +137,14 @@ function TokenMenu(props) {
                     <img
                       src={`/assets/tokens/${option}.svg`}
                       alt="Logo"
-                      style={{ width: "24px", marginRight: "8px" }}
+                      className="tokenIcon"
                     />
-                    {option}
+                    <div className="tokenMenuOptionText">
+                      <p className="tokenMenuText tokenHeaderText">
+                        {currency[option]["name"]}
+                      </p>
+                      <p className="tokenMenuText">{option}</p>
+                    </div>
                   </Stack>
                 }
               />

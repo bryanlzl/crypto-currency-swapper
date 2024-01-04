@@ -1,0 +1,24 @@
+.tokenMenuOptionText {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: left;
+}
+
+.tokenIcon {
+  width: 30px;
+  margin-right: "0px";
+}
+
+.tokenMenuText {
+  margin: 0;
+  padding: 0;
+  color: rgb(131, 131, 131);
+  letter-spacing: -0.3;
+  font-size: 11px;
+}
+
+.tokenHeaderText {
+  font-weight: bold;
+  font-size: 15px;
+}

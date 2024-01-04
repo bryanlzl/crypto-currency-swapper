@@ -15,16 +15,16 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFilledInput-root": {
       borderRadius: "5px",
       fontWeight: "bold",
-      color: "#686868",
+      color: "#d9d9d9",
     },
     "& .MuiInputLabel-root.Mui-focused": {
-      color: "#686868",
+      color: "#d9d9d9",
       fontWeight: "bold",
-      textShadow: "0 0 5px rgba(97, 159, 218, 0.75)",
+      textShadow: "0 0 1px rgba(255, 255, 0, 0.75)",
     },
     "& .MuiInputLabel-root, & .MuiInput-input::placeholder": {
       fontWeight: "bold",
-      color: "#a2a2a2",
+      color: "#d9d9d9",
     },
   },
 }));

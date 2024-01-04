@@ -8,14 +8,13 @@ import "../styles/SwapField.css";
 function SwapField(props) {
   const currency = props.currency;
   const fieldType = props.fieldType;
-  const { swappedConvRate, setSwappedConvRate } =
-    fieldType === "receive" && props.currentConversion;
+  const { swappedConvRate, setSwappedConvRate } = props.currentConversion;
   const { modalState, setModalState } = props.triggerModal;
   const { swappedCurrency, setSwappedCurrency } = props.swappedCurrencySetting;
   const [isHovered, setIsHovered] = useState(false);
-  const currencySelected = swappedCurrency[fieldType]["currency"];
   const swapFieldStyles = useStyles();
   const [amount, setAmount] = useState(0);
+  const currencySelected = swappedCurrency[fieldType]["currency"];
   const handleChange = (event) => {
     event.target.value !== 0 ? setAmount(event.target.value) : setAmount(0);
     setSwappedCurrency((prev) => {
@@ -127,7 +126,7 @@ function SwapField(props) {
             maxHeight: "24.5px",
           }}
         >
-          Choose Token
+          Select Token
         </p>
         <ExpandMore fontSize="small" />
       </div>
@@ -154,8 +153,8 @@ function SwapField(props) {
           }}
           className={`${isHovered ? "img-hover-effect" : ""}`}
         />
-        <p style={{ margin: "0", color: "#686868" }}>{currencySelected}</p>
-        <ArrowDropDown fontSize="small" htmlColor="#686868" />
+        <p style={{ margin: "0", color: "#4a4a4a" }}>{currencySelected}</p>
+        <ArrowDropDown fontSize="small" htmlColor="#4a4a4a" />
       </div>
     );
 
@@ -170,7 +169,7 @@ function SwapField(props) {
           onClick={openModalHandler}
           sx={{
             textTransform: "none",
-            color: "#858585",
+            color: "#4a4a4a",
             fontWeight: "bold",
             fontSize: "20px",
             letterSpacing: "-0.5px",
@@ -210,13 +209,16 @@ function SwapField(props) {
                 height: "60px",
                 fontSize: "25px",
                 padding: "0px 20px 0px 20px !important",
-                backgroundColor: `${isHovered && "#efefef"}`,
-                "&:hover": {
-                  backgroundColor: "", // Override background color on hover
-                },
+                backgroundColor: `${isHovered && "#000000"}`,
+                color: `${isHovered && "#000000"}`,
               },
             }}
-            inputProps={{ className: "custom-input-class" }}
+            inputProps={{
+              className: "custom-input-class",
+              onWheel: (event) => {
+                event.target.blur();
+              },
+            }}
             className={`${swapFieldStyles.noArrows} ${swapFieldStyles.amountField}`}
           />
           <InputLabel
@@ -225,7 +227,7 @@ function SwapField(props) {
               borderBottomLeftRadius: "15px",
               borderBottomRightRadius: "15px",
               backgroundColor: "#dfdfdf",
-              color: "#9f9f9f",
+              color: "#4d4d4d",
               fontSize: "13px",
               fontWeight: "bold",
               padding: "3px 20px 0px 20px",
