@@ -1,0 +1,94 @@
+.divExchangedSuccessText {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.tokenTableSubheader {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin: 0px;
+}
+
+.tokenTable {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  margin: 0px;
+}
+
+.tokenSubheaderText {
+  margin: 0;
+  padding: 0;
+  color: rgb(131, 131, 131);
+  letter-spacing: -0.3;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tokenMain {
+  display: flex;
+  flex-direction: row;
+  justify-self: left;
+  align-items: center;
+  margin: 5px 3px 0px 3px;
+}
+
+.tokenMainIcon {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  margin: 0px 3px 0px 0px;
+}
+
+.tokenMenuText {
+  display: flex;
+  flex-direction: column;
+  justify-items: left;
+  align-items: left;
+  margin-left: 15px;
+}
+
+.tokenIcon {
+  width: 30px;
+  margin-right: "0px";
+}
+
+.USDValueText {
+  margin-left: 13px;
+  font-weight: bold;
+}
+
+.tokenNameText {
+  margin: 0;
+  padding: 0;
+  color: rgb(131, 131, 131);
+  letter-spacing: -0.3;
+  font-size: 11px;
+}
+
+.tokenHeaderText {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.tokenAmountValue {
+  margin: 0;
+  font-size: large;
+  border: 2px solid rgb(153, 153, 153);
+  border-radius: 4px;
+  justify-items: center;
+  align-self: self-start;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.tokenAmountValueText {
+  margin: 0;
+  width: 400px;
+  text-align: center;
+  overflow-x: auto;
+}

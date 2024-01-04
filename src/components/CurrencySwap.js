@@ -4,13 +4,22 @@ import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SwapField from "./SwapField";
 import SelectionModal from "./modal/SelectionModal";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import CompletionModal from "./modal/CompletionModal";
 import "../styles/CurrencySwap.css";
 
 function CurrencySwap(props) {
   const currency = props.currency;
   const [modalState, setModalState] = useState({ isOpen: false, openFor: "" });
+  const [completionModalState, setCompletionModalState] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const triggerModal = { modalState: modalState, setModalState: setModalState };
+  const toggleCompletionModal = () => {
+    setCompletionModalState(!completionModalState);
+  };
+  const triggerCompModal = {
+    completionModalState: completionModalState,
+    setCompletionModalState: setCompletionModalState,
+  };
   const [swappedCurrency, setSwappedCurrency] = useState({
     pay: { currency: "", amount: 0, USD: 0 },
     receive: { currency: "", amount: 0 },
@@ -137,11 +146,17 @@ function CurrencySwap(props) {
             color: "lightgray",
           },
         }}
+        onClick={toggleCompletionModal}
       >
         Exchange
       </Button>
       <SelectionModal
         triggerModal={triggerModal}
+        currency={currency}
+        swappedCurrencySetting={swappedCurrencySetting}
+      />
+      <CompletionModal
+        triggerCompModal={triggerCompModal}
         currency={currency}
         swappedCurrencySetting={swappedCurrencySetting}
       />
