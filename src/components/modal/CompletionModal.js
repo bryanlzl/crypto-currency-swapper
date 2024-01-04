@@ -67,7 +67,13 @@ function CompletionModal(props) {
   return payCurrency && payAmount && receiveCurrency && receiveAmount ? (
     <Dialog
       open={completionModalState}
-      PaperProps={{ sx: { borderRadius: "15px", maxWidth: "650px" } }}
+      PaperProps={{
+        sx: {
+          borderRadius: "15px",
+          maxWidth: "650px",
+          backgroundColor: "#dcdcdc",
+        },
+      }}
       onClose={() => setCompletionModalState(!completionModalState)}
     >
       <div style={{ borderRadius: "15px" }}>
@@ -81,20 +87,26 @@ function CompletionModal(props) {
             fontWeight: "bold",
             textAlign: "center",
             padding: "10px 24px 0px 24px",
-            color: "#686868",
+            color: "white",
+            backgroundColor: "#1d1f2c",
           }}
         >
-          Transaction Success!
-          <div
-            style={{
-              marginBottom: "7px",
-              borderBottom: "1.5px solid #aeaeae",
-              width: "100%",
-            }}
-          ></div>
+          Transaction Success
         </DialogTitle>
-
-        <DialogContent style={{ overflowY: "hidden" }}>
+        <div
+          style={{
+            borderBottom: "1.5px solid #aeaeae",
+            width: "100%",
+          }}
+        ></div>
+        <DialogContent
+          style={{
+            overflowY: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <DialogContentText
             marginBottom={"10px"}
             flexWrap={true}
@@ -129,6 +141,11 @@ function CompletionModal(props) {
                   style={{ margin: "0" }}
                 />
                 <p className="USDValueText">${USDAmount}</p>
+                <KeyboardDoubleArrowDownIcon
+                  fontSize="large"
+                  htmlColor="#373737"
+                  style={{ margin: "0" }}
+                />
               </div>
 
               <div className="tokenMain">
@@ -157,7 +174,7 @@ function CompletionModal(props) {
               letterSpacing: "-0.5px",
               color: "#434343",
               borderRadius: "10px",
-              boxShadow: "none",
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.16)",
               "&:hover": {
                 backgroundColor: "#868bac",
                 color: "lightgray",
@@ -173,7 +190,13 @@ function CompletionModal(props) {
   ) : (
     <Dialog
       open={completionModalState}
-      PaperProps={{ sx: { borderRadius: "15px", maxWidth: "650px" } }}
+      PaperProps={{
+        sx: {
+          borderRadius: "15px",
+          maxWidth: "650px",
+          backgroundColor: "#dcdcdc",
+        },
+      }}
       onClose={() => setCompletionModalState(!completionModalState)}
     >
       <div style={{ borderRadius: "15px" }}>
@@ -187,19 +210,18 @@ function CompletionModal(props) {
             fontWeight: "bold",
             textAlign: "center",
             padding: "10px 24px 0px 24px",
-            color: "#686868",
+            color: "white",
+            backgroundColor: "#1d1f2c",
           }}
         >
           Error
-          <div
-            style={{
-              marginBottom: "7px",
-              borderBottom: "1.5px solid #aeaeae",
-              width: "100%",
-            }}
-          ></div>
         </DialogTitle>
-
+        <div
+          style={{
+            borderBottom: "1.5px solid #aeaeae",
+            width: "100%",
+          }}
+        ></div>
         <DialogContent style={{ overflowY: "hidden" }}>
           <DialogContentText
             marginBottom={"10px"}
@@ -230,7 +252,7 @@ function CompletionModal(props) {
               letterSpacing: "-0.5px",
               color: "#434343",
               borderRadius: "10px",
-              boxShadow: "none",
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.16)",
               "&:hover": {
                 backgroundColor: "#868bac",
                 color: "lightgray",

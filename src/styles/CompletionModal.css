@@ -13,10 +13,12 @@
 
 .tokenTable {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  justify-self: center;
   justify-items: center;
   align-items: center;
-  margin: 0px;
+  grid-gap: 10px;
+  margin: 10px 0;
 }
 
 .tokenSubheaderText {
@@ -58,16 +60,19 @@
 }
 
 .USDValueText {
-  margin-left: 13px;
+  margin: 0 13px 0 13px;
   font-weight: bold;
+  font-size: 20px;
+  color: #757575;
 }
 
 .tokenNameText {
   margin: 0;
   padding: 0;
-  color: rgb(131, 131, 131);
+  color: #5c5c5c;
   letter-spacing: -0.3;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .tokenHeaderText {
@@ -87,8 +92,15 @@
 }
 
 .tokenAmountValueText {
+  padding-left: 5px;
   margin: 0;
   width: 400px;
-  text-align: center;
+  text-align: left;
   overflow-x: auto;
+  font-weight: bold;
+  color: #868686;
+}
+
+.swap-button {
+  transition: background-color 0.3s ease;
 }
