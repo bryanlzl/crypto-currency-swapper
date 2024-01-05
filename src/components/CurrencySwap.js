@@ -13,9 +13,6 @@ function CurrencySwap(props) {
   const [completionModalState, setCompletionModalState] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const triggerModal = { modalState: modalState, setModalState: setModalState };
-  const toggleCompletionModal = () => {
-    setCompletionModalState(!completionModalState);
-  };
   const triggerCompModal = {
     completionModalState: completionModalState,
     setCompletionModalState: setCompletionModalState,
@@ -61,6 +58,10 @@ function CurrencySwap(props) {
   ) : (
     <DoubleArrowIcon fontSize="large" htmlColor="#dfdfdf" />
   );
+  const onSubmitHandler = (event) => {
+    setCompletionModalState(!completionModalState);
+    event.preventDefault();
+  };
 
   useEffect(() => {
     const payCurrency = swappedCurrency.pay.currency;
@@ -79,7 +80,7 @@ function CurrencySwap(props) {
   }, [swappedCurrency]);
 
   return (
-    <div className="main">
+    <form onSubmit={onSubmitHandler} className="main">
       <Box className="swap-interface">
         <SwapField
           fieldType="pay"
@@ -132,6 +133,7 @@ function CurrencySwap(props) {
       <Button
         variant="contained"
         className="swap-button"
+        type="submit"
         sx={{
           marginTop: "10px",
           height: "30px",
@@ -146,7 +148,6 @@ function CurrencySwap(props) {
             color: "lightgray",
           },
         }}
-        onClick={toggleCompletionModal}
       >
         Exchange
       </Button>
@@ -160,7 +161,7 @@ function CurrencySwap(props) {
         currency={currency}
         swappedCurrencySetting={swappedCurrencySetting}
       />
-    </div>
+    </form>
   );
 }
 
