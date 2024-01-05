@@ -107,61 +107,50 @@ function CompletionModal(props) {
             alignItems: "center",
           }}
         >
-          <DialogContentText
-            marginBottom={"10px"}
-            flexWrap={true}
-            style={{
-              letterSpacing: "-0.5px",
-              maxWidth: "650px",
-              width: "400px",
-              margin: "0",
-            }}
-          >
-            <div className="tokenTableSubheader">
-              <p className="tokenSubheaderText">Successfully exchanged:</p>
-            </div>
-            <div className="tokenTable">
-              <div className="tokenMain">
-                {tokenAssetIcons.pay}
-                <div className="tokenMenuText">
-                  <p className="tokenNameText tokenHeaderText">
-                    {currency[payCurrency]["name"]}
-                  </p>
-                  <p className="tokenNameText">{payCurrency}</p>
-                </div>
-              </div>
-              <div className="tokenAmountValue">
-                <p className="tokenAmountValueText"> {payAmount}</p>
-              </div>
-
-              <div className="tokenMainIcon">
-                <KeyboardDoubleArrowDownIcon
-                  fontSize="large"
-                  htmlColor="#373737"
-                  style={{ margin: "0" }}
-                />
-                <p className="USDValueText">${USDAmount}</p>
-                <KeyboardDoubleArrowDownIcon
-                  fontSize="large"
-                  htmlColor="#373737"
-                  style={{ margin: "0" }}
-                />
-              </div>
-
-              <div className="tokenMain">
-                {tokenAssetIcons.receive}
-                <div className="tokenMenuText">
-                  <p className="tokenNameText tokenHeaderText">
-                    {currency[receiveCurrency]["name"]}
-                  </p>
-                  <p className="tokenNameText">{receiveCurrency}</p>
-                </div>
-              </div>
-              <div className="tokenAmountValue">
-                <p className="tokenAmountValueText"> {receiveAmount}</p>
+          <div className="tokenTableSubheader">
+            <p className="tokenSubheaderText">Successfully exchanged:</p>
+          </div>
+          <div className="tokenTable">
+            <div className="tokenMain">
+              {tokenAssetIcons.pay}
+              <div className="tokenMenuText">
+                <p className="tokenNameText tokenHeaderText">
+                  {currency[payCurrency]["name"]}
+                </p>
+                <p className="tokenNameText">{payCurrency}</p>
               </div>
             </div>
-          </DialogContentText>
+            <div className="tokenAmountValue">
+              <p className="tokenAmountValueText"> {payAmount}</p>
+            </div>
+
+            <div className="tokenMainIcon">
+              <KeyboardDoubleArrowDownIcon
+                fontSize="large"
+                htmlColor="#373737"
+                style={{ margin: "0" }}
+              />
+              <p className="USDValueText">${USDAmount}</p>
+              <KeyboardDoubleArrowDownIcon
+                fontSize="large"
+                htmlColor="#373737"
+                style={{ margin: "0" }}
+              />
+            </div>
+
+            <div className="tokenMain">
+              {tokenAssetIcons.receive}
+              <div className="tokenMenuText">
+                <p className="tokenNameText tokenHeaderText">
+                  {currency[receiveCurrency]["name"]}
+                </p>
+                <p className="tokenNameText">{receiveCurrency}</p>
+              </div>
+            </div>
+            <div className="tokenAmountValue">
+              <p className="tokenAmountValueText"> {receiveAmount}</p>
+            </div>
+          </div>
           <Button
             variant="contained"
             className="swap-button"
