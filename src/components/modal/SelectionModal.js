@@ -39,7 +39,7 @@ function SelectionModal(props) {
             fontSize: "20px",
             color: "#cbcbcb",
             textAlign: "center",
-            backgroundColor: "#1d1f2c",
+            backgroundColor: "#4b4f68",
           }}
         >
           Choose token to {modalMessage}

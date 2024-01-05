@@ -88,7 +88,7 @@ function CompletionModal(props) {
             textAlign: "center",
             padding: "10px 24px 0px 24px",
             color: "white",
-            backgroundColor: "#1d1f2c",
+            backgroundColor: "#4b4f68",
           }}
         >
           Transaction Success
@@ -200,7 +200,7 @@ function CompletionModal(props) {
             textAlign: "center",
             padding: "10px 24px 0px 24px",
             color: "white",
-            backgroundColor: "#1d1f2c",
+            backgroundColor: "#5f606a",
           }}
         >
           Error
