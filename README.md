@@ -1,8 +1,8 @@
 ## Currency Swap ![License](https://img.shields.io/badge/license-MIT-blue)
 
-A currency swap form built with ReactJS and Material UI
+A cryptocurrency swap form built with ReactJS and Material UI
 
-<img src="./public/assets/readme/currencySwapPreview.png" alt="readme-preview" width="50%" style="border-radius: 10px;">
+<img src="./public/assets/readme/currencySwapPreview.png" alt="readme-preview" width="450px" style="border-radius: 10px;">
 
 ### Features
 
