@@ -212,28 +212,16 @@ function CompletionModal(props) {
           }}
         ></div>
         <DialogContent style={{ overflowY: "hidden" }}>
-          <DialogContentText
-            marginBottom={"10px"}
-            flexWrap={true}
-            style={{
-              letterSpacing: "-0.5px",
-              maxWidth: "650px",
-              width: "400px",
-              margin: "0",
-            }}
-          >
-            <div className="tokenTableSubheader">
-              <p className="tokenSubheaderText">
-                Please ensure all token fields are filled
-              </p>
-            </div>
-          </DialogContentText>
-
+          <div className="tokenTableSubheader">
+            <p className="tokenSubheaderText">
+              Please ensure all token fields are filled
+            </p>
+          </div>
           <Button
             variant="contained"
             className="swap-button"
             sx={{
-              marginTop: "10px",
+              marginTop: "15px",
               height: "30px",
               width: "400px",
               backgroundColor: "#9ebede",
