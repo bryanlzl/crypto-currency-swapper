@@ -24,15 +24,36 @@ function SelectionModal(props) {
         })
       }
     >
-      <div style={{ borderRadius: "15px" }}>
-        <DialogTitle style={{ letterSpacing: "-0.5px" }}>
+      <div
+        style={{
+          borderRadius: "15px",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "#f5f5f5",
+        }}
+      >
+        <DialogTitle
+          style={{
+            letterSpacing: "-0.5px",
+            fontWeight: "bold",
+            fontSize: "20px",
+            color: "#cbcbcb",
+            textAlign: "center",
+            backgroundColor: "#1d1f2c",
+          }}
+        >
           Choose token to {modalMessage}
         </DialogTitle>
         <DialogContent style={{ overflowY: "hidden" }}>
           <DialogContentText
             marginBottom={"10px"}
             flexWrap={true}
-            style={{ letterSpacing: "-0.5px" }}
+            style={{
+              fontWeight: "bold",
+              color: "#8c8c8c",
+              letterSpacing: "-0.5px",
+              marginTop: "18px",
+            }}
           >
             Enter keyword or select from list below
           </DialogContentText>
