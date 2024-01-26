@@ -1,11 +1,4 @@
-import React, { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Button,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, Button } from "@mui/material";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import "../../styles/CompletionModal.css";
 
@@ -18,7 +11,6 @@ function CompletionModal(props) {
   const receiveCurrency = swappedCurrency.receive["currency"];
   const payAmount = swappedCurrency.pay["amount"];
   const receiveAmount = swappedCurrency.receive["amount"];
-
   const generateUSDAmount = () => {
     const USDvalue = swappedCurrency.pay["USD"];
     const formattedValue =

@@ -30,6 +30,7 @@ function CurrencySwap(props) {
     swappedConvRate: swappedConvRate,
     setSwappedConvRate: setSwappedConvRate,
   };
+
   const handleCurrencySwap = () => {
     setSwappedCurrency((prev) => {
       return {
@@ -43,21 +44,26 @@ function CurrencySwap(props) {
       };
     });
   };
+
   const swappedCurrencySetting = {
     swappedCurrency: swappedCurrency,
     setSwappedCurrency: setSwappedCurrency,
   };
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
   const renderSwapIcon = isHovered ? (
     <SwapHorizIcon fontSize="large" htmlColor="#dfdfdf" />
   ) : (
     <DoubleArrowIcon fontSize="large" htmlColor="#dfdfdf" />
   );
+
   const onSubmitHandler = (event) => {
     setCompletionModalState(!completionModalState);
     event.preventDefault();

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import CurrencySwap from "./components/CurrencySwap";
 import "./styles/App.css";
 
@@ -144,11 +143,11 @@ function App() {
       date: "2023-08-29T07:10:40.000Z",
       price: 0.994,
     },
-    USDC: {
-      name: "USD Coin",
-      date: "2023-08-29T07:10:40.000Z",
-      price: 0.9998782611186441,
-    },
+    //USDC: {
+    //name: "USD Coin",
+    //date: "2023-08-29T07:10:40.000Z",
+    //price: 0.9998782611186441,
+    // },
     WBTC: {
       name: "Wrapped Bitcoin",
       date: "2023-08-29T07:10:52.000Z",

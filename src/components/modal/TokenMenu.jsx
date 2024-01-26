@@ -19,9 +19,11 @@ function TokenMenu(props) {
   const initialToken = swappedCurrency[modalState.openFor]["currency"];
   const tokenStyles = styles();
   const [searchValue, setSearchValue] = useState("");
+
   const filteredTokenList = currencyList.filter((option) =>
     option.toLowerCase().includes(searchValue.toLowerCase())
   );
+
   const selectTokenHandler = (newValue) => {
     setSwappedCurrency((prev) => {
       const newUSDamount =

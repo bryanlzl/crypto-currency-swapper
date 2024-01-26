@@ -3,6 +3,6 @@
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  background-color: gray;
-  padding-bottom: 500px;
+  background-color: rgb(76, 76, 76);
+  height: 100vh;
 }

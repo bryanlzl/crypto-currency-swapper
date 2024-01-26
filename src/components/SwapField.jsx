@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TextField, InputLabel, Button } from "@mui/material";
 import useStyles from "../styles/swapFieldStyles";
-import { ArrowDropDown, ExpandMore, InfoOutlined } from "@mui/icons-material";
+import { ArrowDropDown, ExpandMore } from "@mui/icons-material";
 import BottomLabel from "./SwapFieldBottomLabel";
 import "../styles/SwapField.css";
 
@@ -15,6 +15,7 @@ function SwapField(props) {
   const swapFieldStyles = useStyles();
   const [amount, setAmount] = useState(0);
   const currencySelected = swappedCurrency[fieldType]["currency"];
+
   const handleChange = (event) => {
     event.target.value !== 0 ? setAmount(event.target.value) : setAmount(0);
     setSwappedCurrency((prev) => {
@@ -94,19 +95,24 @@ function SwapField(props) {
       }
     });
   };
+
   const amountPlaceholder =
     props.fieldType === "pay" ? "Sell Amount" : "Receive Amount";
+
   const openModalHandler = () => {
     setModalState((prev) => {
       return { ...prev, isOpen: !prev.isOpen, openFor: props.fieldType };
     });
   };
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
   const currencyDisplay =
     currencySelected === "" ? (
       <div

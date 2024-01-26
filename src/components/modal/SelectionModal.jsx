@@ -1,12 +1,11 @@
-import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import TokenMenu from "../modal/TokenMenu.js";
-import styles from "../../styles/SelectionModalStyles.js";
+import TokenMenu from "../modal/TokenMenu.jsx";
+import styles from "../../styles/SelectionModalStyles.jsx";
 
 function SelectionModal(props) {
   const currency = props.currency;
@@ -18,7 +17,7 @@ function SelectionModal(props) {
     <Dialog
       open={modalState.isOpen}
       PaperProps={{ sx: { borderRadius: "15px" } }}
-      onClose={(prev) =>
+      onClose={() =>
         setModalState((prev) => {
           return { ...prev, isOpen: !prev.isOpen };
         })
