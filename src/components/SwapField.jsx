@@ -115,51 +115,17 @@ function SwapField(props) {
 
   const currencyDisplay =
     currencySelected === "" ? (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-          width: "100%",
-          maxHeight: "100%",
-        }}
-      >
-        <p
-          style={{
-            bottom: "12px",
-            margin: "0",
-            padding: "3px 5px 8px 5px",
-            maxHeight: "24.5px",
-          }}
-        >
-          Select Token
-        </p>
-        <ExpandMore fontSize="small" />
+      <div className="currency-display">
+        <p>Select Token</p>
+        <ExpandMore className="dropdown-icon" />
       </div>
     ) : (
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+      <div className="currency-display">
         <img
           src={`/assets/tokens/${currencySelected}.svg`}
           alt={currencySelected}
-          style={{
-            marginRight: "10px",
-            maxHeight: "24.5px",
-            maxWidth: "24px",
-            "&:hover": {
-              boxShadow: "0 0 5px rgba(97, 159, 218, 1)",
-            },
-          }}
-          className={`${isHovered ? "img-hover-effect" : ""}`}
         />
-        <p style={{ margin: "0", color: "#4a4a4a" }}>{currencySelected}</p>
+        <p>{currencySelected}</p>
         <ArrowDropDown fontSize="small" htmlColor="#4a4a4a" />
       </div>
     );
@@ -220,6 +186,7 @@ function SwapField(props) {
               },
             }}
             inputProps={{
+              onKeyDown: (event) => event.key === "-" && event.preventDefault(),
               className: "custom-input-class",
               onWheel: (event) => {
                 event.target.blur();
@@ -228,7 +195,7 @@ function SwapField(props) {
             className={`${swapFieldStyles.noArrows} ${swapFieldStyles.amountField}`}
           />
           <InputLabel
-            style={{
+            sx={{
               borderRadius: "0",
               borderBottomLeftRadius: "15px",
               borderBottomRightRadius: "15px",

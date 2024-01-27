@@ -68,7 +68,7 @@ function CompletionModal(props) {
       }}
       onClose={() => setCompletionModalState(!completionModalState)}
     >
-      <div style={{ borderRadius: "15px" }}>
+      <div className="encapsulating-div">
         <DialogTitle
           sx={{
             display: "flex",
@@ -85,14 +85,9 @@ function CompletionModal(props) {
         >
           Transaction Success
         </DialogTitle>
-        <div
-          style={{
-            borderBottom: "1.5px solid #aeaeae",
-            width: "100%",
-          }}
-        ></div>
+        <div className="gap" />
         <DialogContent
-          style={{
+          sx={{
             overflowY: "hidden",
             display: "flex",
             flexDirection: "column",
@@ -120,13 +115,13 @@ function CompletionModal(props) {
               <KeyboardDoubleArrowDownIcon
                 fontSize="large"
                 htmlColor="#373737"
-                style={{ margin: "0" }}
+                sx={{ margin: "0" }}
               />
               <p className="USDValueText">${USDAmount}</p>
               <KeyboardDoubleArrowDownIcon
                 fontSize="large"
                 htmlColor="#373737"
-                style={{ margin: "0" }}
+                sx={{ margin: "0" }}
               />
             </div>
 
@@ -180,7 +175,7 @@ function CompletionModal(props) {
       }}
       onClose={() => setCompletionModalState(!completionModalState)}
     >
-      <div style={{ borderRadius: "15px" }}>
+      <div className="encapsulating-div">
         <DialogTitle
           sx={{
             display: "flex",
@@ -197,12 +192,7 @@ function CompletionModal(props) {
         >
           Error
         </DialogTitle>
-        <div
-          style={{
-            borderBottom: "1.5px solid #aeaeae",
-            width: "100%",
-          }}
-        ></div>
+        <div className="gap" />
         <DialogContent style={{ overflowY: "hidden" }}>
           <div className="tokenTableSubheader">
             <p className="tokenSubheaderText">

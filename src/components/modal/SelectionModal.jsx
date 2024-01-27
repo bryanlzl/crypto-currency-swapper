@@ -23,16 +23,9 @@ function SelectionModal(props) {
         })
       }
     >
-      <div
-        style={{
-          borderRadius: "15px",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#f5f5f5",
-        }}
-      >
+      <div className={modalStyles.mainContent}>
         <DialogTitle
-          style={{
+          sx={{
             letterSpacing: "-0.5px",
             fontWeight: "bold",
             fontSize: "20px",
@@ -43,11 +36,11 @@ function SelectionModal(props) {
         >
           Choose token to {modalMessage}
         </DialogTitle>
-        <DialogContent style={{ overflowY: "hidden" }}>
+        <DialogContent sx={{ overflowY: "hidden" }}>
           <DialogContentText
             marginBottom={"10px"}
             flexWrap={true}
-            style={{
+            sx={{
               fontWeight: "bold",
               color: "#8c8c8c",
               letterSpacing: "-0.5px",
@@ -60,7 +53,7 @@ function SelectionModal(props) {
             swappedCurrencySetting={swappedCurrencySetting}
             currency={currency}
             triggerModal={props.triggerModal}
-            style={{ width: "100%" }}
+            sx={{ width: "100%" }}
           />
         </DialogContent>
       </div>

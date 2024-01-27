@@ -104,3 +104,12 @@
 .swap-button {
   transition: background-color 0.3s ease;
 }
+
+.encapsulating-div {
+  border-radius: 15px;
+}
+
+.gap {
+  border-bottom: 1.5px solid #aeaeae;
+  width: 100%;
+}

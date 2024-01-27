@@ -16,3 +16,35 @@
 .full-input-field:hover {
   background-color: black;
 }
+
+/* styles.css */
+
+.currency-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-height: 100%;
+}
+
+.currency-display p {
+  bottom: 12px;
+  margin: 0;
+  padding: 3px 5px 8px 5px;
+  max-height: 24.5px;
+}
+
+.currency-display img {
+  margin-right: 10px;
+  max-height: 24.5px;
+  max-width: 24px;
+}
+
+.currency-display img:hover {
+  box-shadow: 0 0 5px rgba(97, 159, 218, 1);
+}
+
+.currency-display p {
+  margin: 0;
+  color: #4a4a4a;
+}

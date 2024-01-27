@@ -27,10 +27,14 @@ function TokenMenu(props) {
   const selectTokenHandler = (newValue) => {
     setSwappedCurrency((prev) => {
       const newUSDamount =
-        prev["pay"]["currency"] !== ""
-          ? prev["pay"]["amount"] * currency[prev["pay"]["currency"]]["price"]
-          : prev["pay"]["amount"] *
-            currency[fieldType === "pay" ? newValue : "USD"]["price"];
+        prev["pay"]["amount"] *
+        currency[
+          fieldType === "pay"
+            ? newValue
+            : prev["pay"]["currency"] !== ""
+            ? prev["pay"]["currency"]
+            : "USD"
+        ]["price"];
 
       if (swappedCurrency[fieldType]["amount"] !== 0 && fieldType === "pay") {
         return {
@@ -85,7 +89,6 @@ function TokenMenu(props) {
 
   const tokenHandler = (newValue) => {
     selectTokenHandler(newValue);
-    selectTokenHandler(newValue);
     setModalState((prev) => ({
       ...prev,
       isOpen: !prev.isOpen,
@@ -113,14 +116,14 @@ function TokenMenu(props) {
         value={searchValue}
         placeholder={initialToken}
         onChange={(e) => setSearchValue(e.target.value)}
-        style={{ width: "100%" }}
+        sx={{ width: "100%" }}
         InputProps={{
           startAdornment: renderAdornment(),
           readOnly: false, // Allow typing
         }}
       />
       <div className={tokenStyles.slimScrollbar}>
-        <List disablePadding styles={{ height: "100px" }}>
+        <List disablePadding sx={{ height: "50vh" }}>
           {filteredTokenList.map((option) => (
             <ListItem
               key={option}
