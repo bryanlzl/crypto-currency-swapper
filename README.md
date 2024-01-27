@@ -20,7 +20,7 @@ To install:
 
 To run:
 <br/>
-`npm start`
+`npm run dev`
 
 ## Motivations
 
