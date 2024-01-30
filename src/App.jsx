@@ -33,7 +33,7 @@ function App() {
       date: "2023-08-29T07:10:40.000Z",
       price: 36.345114372881355,
     },
-    STEVMOS: {
+    stEVMOS: {
       name: "SteveMos Token",
       date: "2023-08-29T07:10:40.000Z",
       price: 0.07276706779661017,
@@ -43,7 +43,7 @@ function App() {
       date: "2023-08-29T07:10:40.000Z",
       price: 0.40955638983050846,
     },
-    RATOM: {
+    rATOM: {
       name: "Rocket Atom",
       date: "2023-08-29T07:10:40.000Z",
       price: 10.250918915254237,
@@ -78,7 +78,7 @@ function App() {
       date: "2023-08-29T07:10:45.000Z",
       price: 0.675,
     },
-    STOSMO: {
+    stOSMO: {
       name: "Staking Osmosis",
       date: "2023-08-29T07:10:45.000Z",
       price: 0.431318,
@@ -98,7 +98,7 @@ function App() {
       date: "2023-08-29T07:10:50.000Z",
       price: 7.186657333333334,
     },
-    STATOM: {
+    stATOM: {
       name: "Staking Atom",
       date: "2023-08-29T07:10:45.000Z",
       price: 8.512162050847458,
@@ -113,7 +113,7 @@ function App() {
       date: "2023-08-29T07:10:40.000Z",
       price: 0.00408771,
     },
-    STLUNA: {
+    stLUNA: {
       name: "Staked Terra Luna",
       date: "2023-08-29T07:10:40.000Z",
       price: 0.44232210169491526,
