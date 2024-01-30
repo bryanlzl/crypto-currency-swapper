@@ -97,7 +97,6 @@ function TokenMenu(props) {
 
   const renderAdornment = () => {
     const selectedCurrency = swappedCurrency[fieldType].currency;
-    console.log(selectedCurrency);
     return selectedCurrency !== "" ? (
       <InputAdornment position="start">
         <img
