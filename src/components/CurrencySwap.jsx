@@ -53,7 +53,6 @@ function CurrencySwap(props) {
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
   };

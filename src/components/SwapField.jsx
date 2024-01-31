@@ -108,7 +108,6 @@ function SwapField(props) {
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
   };

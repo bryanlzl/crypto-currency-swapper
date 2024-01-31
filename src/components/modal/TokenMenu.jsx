@@ -140,7 +140,7 @@ function TokenMenu(props) {
                     gap={2}
                   >
                     <img
-                      src={`/assets/tokens/${option}.svg`}
+                      src={`/assets/tokens/${currency[option]["abbv"]}.svg`}
                       alt="Logo"
                       className="tokenIcon"
                     />
@@ -148,7 +148,9 @@ function TokenMenu(props) {
                       <p className="tokenMenuText tokenHeaderText">
                         {currency[option]["name"]}
                       </p>
-                      <p className="tokenMenuText">{option}</p>
+                      <p className="tokenMenuText">
+                        {currency[option]["abbv"]}
+                      </p>
                     </div>
                   </Stack>
                 }
