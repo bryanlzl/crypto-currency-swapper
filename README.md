@@ -22,6 +22,10 @@ To run:
 <br/>
 `npm run dev`
 
+## Live Deployment
+Try it out at:
+https://bryanlzl-currency-swap.vercel.app/
+
 ## Motivations
 
 This project was completed as part of the Switcheo Labs Code Challenge
